@@ -7,14 +7,16 @@ export const FormAdd = ({ contacts, handleForm }) => {
   const [number, setNumber] = useState('');
 
   const onNameChange = e => {
-    setName(prevState => e.target.value);
+    setName(e.target.value);
   };
   const onNumberChange = e => {
-    setNumber(prevState => e.target.value);
+    setNumber(e.target.value);
   };
   const onFormSubmit = e => {
     e.preventDefault();
-    if (contacts.find(el => el.name.toLowerCase() === name)) {
+    if (
+      contacts.find(el => el.name.toLowerCase() === name.toLocaleLowerCase())
+    ) {
       return alert(`${name} is already in contacts.`);
     }
     handleForm(name, number);
